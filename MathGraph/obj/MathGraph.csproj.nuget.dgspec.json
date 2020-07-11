@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\MathGraph.csproj": {}
+    "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\MathGraph.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\MathGraph.csproj": {
+    "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\MathGraph.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\MathGraph.csproj",
+        "projectUniqueName": "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\MathGraph.csproj",
         "projectName": "MathGraph",
-        "projectPath": "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\MathGraph.csproj",
+        "projectPath": "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\MathGraph.csproj",
         "packagesPath": "C:\\Users\\vladi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\obj\\",
+        "outputPath": "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vladi\\AppData\\Roaming\\NuGet\\NuGet.Config",

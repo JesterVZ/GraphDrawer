@@ -7,37 +7,52 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Loaded="Window_Loaded" >
-    <Window.Resources>
-        <Storyboard x:Key="OpenMenu">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonMenu">
-            <BeginStoryboard x:Name="OpenMenu_BeginStoryboard" Storyboard="{StaticResource OpenMenu}"/>
-        </EventTrigger>
-    </Window.Triggers>
+        WindowStyle="None" ResizeMode="NoResize" 
+        Loaded="Window_Loaded">
     <Grid>
-        <Grid x:Name="BackgroundGrid" Background="LightGray" Opacity="0"/>
-        <Button x:Name="ButtonMenu" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
-            <materialDesign:PackIcon Kind="Menu"/>
-        </Button>
-        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="250" Margin="-250, 0, 0, 0 " Background="White">
+        <lvc:CartesianChart Name="SeriesChart" Grid.Column="1" >
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Y"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="X"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+        </lvc:CartesianChart>
+        <Grid VerticalAlignment="Top" Height="30" Background="#FF00B9FF" MouseDown="Grid_MouseDown">
+
+        </Grid>
+        <Grid x:Name="MenuGrid" Background="#FF00B9FF" HorizontalAlignment="Left" Width="32">
             <StackPanel>
-                <Label Height="35" Content="Settings" FontSize="16"  HorizontalContentAlignment="Center"/>
-                <ListView Foreground="#FF313131">
-                    <ListViewItem Height="45" Padding="0">
+                <Grid Background="White" Height="100">
+                    <ToggleButton HorizontalAlignment="Right" Name="MenuButton" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Kind="Menu" Width="20" Height="20" Foreground="Black" VerticalAlignment="Center"/>
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="HideStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="MenuGrid" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="200" To="32" Duration="0:0:0.2">
+
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ShowStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="MenuGrid" Storyboard.TargetProperty="Width" BeginTime="0:0:0" From="32" To="200" Duration="0:0:0.2">
+
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                    </ToggleButton>
+                </Grid>
+                <ListView BorderBrush="Transparent" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Sigma" Height="30" Foreground="#FF22FB00" Width="40"/>
-                            <ComboBox Name="GraphTypeCombobox" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30, 4, 0, 0" Width="120" Height="22" SelectionChanged="GraphTypeCombobox_SelectionChanged">
+                            <materialDesign:PackIcon Kind="Sigma" Width="20" Height="20" Foreground="White" VerticalAlignment="Center"/>
+                            <ComboBox Name="GraphTypeCombobox" Grid.Column="0" Margin="15, 0, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="GraphTypeCombobox_SelectionChanged">
                                 <TextBlock>Y = X^2</TextBlock>
                                 <TextBlock>Y = X^n</TextBlock>
                                 <TextBlock>Y = X^3</TextBlock>
@@ -47,45 +62,40 @@
                             </ComboBox>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="StepForward" Height="30" Foreground="#FF01D4DE" Width="40"/>
-                            <Slider Grid.Column="0" Name="StepSlider" HorizontalAlignment="Center" Margin="30,4,0,0" VerticalAlignment="Top" Width="120" ValueChanged="StepSlider_ValueChanged"/>
-                            <TextBlock Grid.Column="0" Name="StepLabelValue" TextAlignment="Left" Margin="0, 5, 0, 0" Text="Step:" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
-                        </StackPanel>
+                            <materialDesign:PackIcon Kind="DebugStepOver" Width="20" Height="20" Foreground="White" VerticalAlignment="Center"/>
+                            <Slider Grid.Column="0" Name="StepSlider" Margin="15, 0, 0, 0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" ValueChanged="StepSlider_ValueChanged"/>
+                            <TextBlock Grid.Column="0" Name="StepLabelValue" TextAlignment="Center" Foreground="White" Text="Step:" TextWrapping="Wrap" VerticalAlignment="Top" Width="37"/>
 
-                    </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ChartAreaspline" Height="30" Foreground="#FFFFE800" Width="40"/>
-                            <Button Content="Draw" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30,4,0,0" Width="120" Click="Button_Click"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Sync" Height="30" Foreground="#FFFF00E8" Width="40"/>
-                            <Button Content="Clear" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30,4,0,0" Width="120" Click="Button_Click_1"/>
+                            <materialDesign:PackIcon Kind="ChartAreaspline" Width="20" Height="20" Foreground="White" VerticalAlignment="Center"/>
+                            <Button Content="Draw" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15, 0, 0, 0" Width="120" Click="Button_Click"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ChartTimelineVariant" Height="30" Foreground="Red" Width="40"/>
-                            <CheckBox Grid.Column="0" Content="Draw points" Name="DrawPointsCheckBox" HorizontalAlignment="Left" Margin="30,4,0,0" VerticalAlignment="Top"/>
+                            <materialDesign:PackIcon Kind="Cached" Width="20" Height="20" Foreground="White" VerticalAlignment="Center"/>
+                            <Button Content="Clear" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="15, 0, 0, 0" Width="120" Click="Button_Click_1"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="45" Padding="0">
+                    <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Exponent" Height="30" Foreground="Blue" Width="40"/>
-                            <TextBox Grid.Column="0" IsEnabled="False" Name="PowerTextBox" HorizontalAlignment="Center" Margin="30,4,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <materialDesign:PackIcon Kind="ChartTimelineVariant" Width="20" Height="20" Foreground="White" VerticalAlignment="Center"/>
+                            <CheckBox Grid.Column="0" Content="Draw points" Name="DrawPointsCheckBox" Foreground="White" HorizontalAlignment="Left" Margin="15, 0, 0, 0" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="30">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Grid.Column="0" Name="PowerTextBox" Visibility="Hidden" HorizontalAlignment="Center" Margin="34, 0, 0, 0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
-            <Button x:Name="ButtonClose" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}">
-                <materialDesign:PackIcon Kind="Close"/>
-            </Button>
         </Grid>
-
     </Grid>
     <!--<Grid>
         <Grid.ColumnDefinitions>

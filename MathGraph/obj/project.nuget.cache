@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cCsublajJfQ4rzqH8ZHlaq2u+DTGipBJNoMgw0OVX/57HGhzu40ot/3kvi9ntp5clyDSqYHPESGUq2gFxwHk4A==",
+  "dgSpecHash": "ivvYufhwUEzzRx/sgSMTVljHS4q7pdfarfYb+r3iZB0GHbQnDmhPa9lEA/NdiGmma0BYLNj6nudq8lSoVF+ngQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vladi\\source\\repos\\MathGraph\\MathGraph\\MathGraph.csproj",
+  "projectFilePath": "C:\\Users\\vladi\\OneDrive\\Documents\\MathGraphProject\\MathGraph\\MathGraph.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladi\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
