@@ -53,7 +53,14 @@ namespace MathGraph
                       equationSolver.Power(2);
                       break;
                   case 1:
-                      equationSolver.Power(Convert.ToInt32(PowerTextBox.Text));
+                    try
+                    {
+                        equationSolver.Power(Convert.ToInt32(PowerTextBox.Text));
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Укажите степень");
+                    }
                       break;
                   case 2:
                       equationSolver.Power(3);
@@ -93,7 +100,8 @@ namespace MathGraph
 
           private void Button_Click_1(object sender, RoutedEventArgs e)
           {
-          }
+            SeriesChart.Series.Clear();
+        }
 
           private void StepSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
           {
@@ -110,5 +118,10 @@ namespace MathGraph
                   PowerTextBox.IsEnabled = false;
               }
           }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

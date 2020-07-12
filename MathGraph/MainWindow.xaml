@@ -19,13 +19,16 @@
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
         <Grid VerticalAlignment="Top" Height="30" Background="#FF00B9FF" MouseDown="Grid_MouseDown">
-
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Graph Editor" FontSize="16" FontWeight="Bold" Foreground="White"/>
+            <Button HorizontalAlignment="Right" Width="30" Background="{x:Null}" BorderBrush="{x:Null}" Click="Button_Click_2">
+                <materialDesign:PackIcon Kind="Close" Foreground="White" Width="28" Height="28"/>
+            </Button>
         </Grid>
-        <Grid x:Name="MenuGrid" Background="#FF00B9FF" HorizontalAlignment="Left" Width="32">
+        <Grid x:Name="MenuGrid" Background="#FF00B9FF" HorizontalAlignment="Left" Width="200">
             <StackPanel>
                 <Grid Background="White" Height="100">
                     <ToggleButton HorizontalAlignment="Right" Name="MenuButton" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent">
-                        <materialDesign:PackIcon Kind="Menu" Width="20" Height="20" Foreground="Black" VerticalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25" Foreground="#FF00B9FF" VerticalAlignment="Center"/>
                         <ToggleButton.Triggers>
                             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
                                 <BeginStoryboard>
@@ -90,7 +93,7 @@
                     </ListViewItem>
                     <ListViewItem Height="30">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Grid.Column="0" Name="PowerTextBox" Visibility="Hidden" HorizontalAlignment="Center" Margin="34, 0, 0, 0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            <TextBox Grid.Column="0" Name="PowerTextBox" IsEnabled="False" HorizontalAlignment="Center" Margin="34, 0, 0, 0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
