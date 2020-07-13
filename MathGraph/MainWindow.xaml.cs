@@ -85,7 +85,7 @@ namespace MathGraph
                   SeriesChart.Series.Add(new LineSeries
                   {
                       Values = chartV,
-                  });
+                  });;
               } else
               {
                   SeriesChart.Series.Add(new LineSeries
